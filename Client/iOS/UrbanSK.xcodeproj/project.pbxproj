@@ -16,8 +16,7 @@
 		659737652CA049FA0091194E /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659737622CA049FA0091194E /* Tileset.swift */; };
 		659737662CA049FA0091194E /* UrbanPlansResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659737632CA049FA0091194E /* UrbanPlansResponse.swift */; };
 		659737672CA049FA0091194E /* UrbanPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659737642CA049FA0091194E /* UrbanPlan.swift */; };
-		6597376C2CA04A270091194E /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659737692CA04A270091194E /* MapKitViewController.swift */; };
-		6597376D2CA04A270091194E /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6597376A2CA04A270091194E /* GoogleMapsViewController.swift */; };
+		6597376D2CA04A270091194E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6597376A2CA04A270091194E /* MapViewController.swift */; };
 		6597376E2CA04A270091194E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6597376B2CA04A270091194E /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +31,7 @@
 		659737622CA049FA0091194E /* Tileset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tileset.swift; sourceTree = "<group>"; };
 		659737632CA049FA0091194E /* UrbanPlansResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrbanPlansResponse.swift; sourceTree = "<group>"; };
 		659737642CA049FA0091194E /* UrbanPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrbanPlan.swift; sourceTree = "<group>"; };
-		659737692CA04A270091194E /* MapKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
-		6597376A2CA04A270091194E /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
+		6597376A2CA04A270091194E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6597376B2CA04A270091194E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,8 +91,7 @@
 		659737682CA04A270091194E /* view */ = {
 			isa = PBXGroup;
 			children = (
-				659737692CA04A270091194E /* MapKitViewController.swift */,
-				6597376A2CA04A270091194E /* GoogleMapsViewController.swift */,
+				6597376A2CA04A270091194E /* MapViewController.swift */,
 				6597376B2CA04A270091194E /* HomeViewController.swift */,
 			);
 			path = view;
@@ -177,12 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6597376C2CA04A270091194E /* MapKitViewController.swift in Sources */,
 				659737652CA049FA0091194E /* Tileset.swift in Sources */,
 				654BEB1F2C8F0598007CADBE /* AppDelegate.swift in Sources */,
 				6597376E2CA04A270091194E /* HomeViewController.swift in Sources */,
 				654BEB212C8F0598007CADBE /* SceneDelegate.swift in Sources */,
-				6597376D2CA04A270091194E /* GoogleMapsViewController.swift in Sources */,
+				6597376D2CA04A270091194E /* MapViewController.swift in Sources */,
 				659737672CA049FA0091194E /* UrbanPlan.swift in Sources */,
 				659737662CA049FA0091194E /* UrbanPlansResponse.swift in Sources */,
 			);

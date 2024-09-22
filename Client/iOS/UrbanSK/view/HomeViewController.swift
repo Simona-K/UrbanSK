@@ -92,7 +92,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextVC = segue.destination as! GoogleMapsViewController
+        let nextVC = segue.destination as! MapViewController
         let urbanPlan = sender as! UrbanPlan
         nextVC.urbanPlan = urbanPlan
     }

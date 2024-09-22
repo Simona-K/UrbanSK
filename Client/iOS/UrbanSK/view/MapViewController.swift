@@ -1,5 +1,5 @@
 //
-//  GoogleMapsViewController.swift
+//  MapViewController.swift
 //  UrbanSK
 //
 //  Created by Simona Kostovska on 6.09.24.
@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMaps
 
-class GoogleMapsViewController: UIViewController {
+class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
 
