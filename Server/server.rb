@@ -1,10 +1,15 @@
 require 'sinatra'
+require_relative 'data/database'
+
+configure do
+    @@database = Database.new
+end
 
 get '/' do
     'Hello world'
 end
 
-get '/api/urbanplans' do
+get '/api/urbanplansHardcoded' do
     '
     {
         "urbanPlans":
@@ -34,4 +39,15 @@ get '/api/urbanplans' do
     }
     '
 end
+
+get '/api/createUrbanPlans' do
+    @@database.createUrbanPlans
+    'Urban plans created'
+end
+
+get '/api/urbanPlans' do
+    urbanPlans = @@database.urbanPlans
+    JSON.pretty_generate(urbanPlans)
+end
+    
 
