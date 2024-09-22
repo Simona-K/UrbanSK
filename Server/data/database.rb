@@ -2,6 +2,7 @@ require 'sqlite3'
 require 'base64'
 require_relative 'queries'
 require_relative '../model/urbanplan'
+require_relative '../model/tileset'
 
 class Database
 
@@ -10,16 +11,31 @@ class Database
     @queries = Queries.new
   end
 
-  def createUrbanPlans
-    @db.execute @queries.createUrbanPlans
+  def createUrbanPlansTable
+    @db.execute @queries.createUrbanPlansTable
+  end
+
+  def createTilesetsTable
+    @db.execute @queries.createTilesetsTable
   end
 
   def urbanPlans
-    rows = @db.execute @queries.urbanPlans
-    puts rows.count
+    urbanPlanRows = @db.execute @queries.urbanPlans
+    puts "Urban plans"
+    puts urbanPlanRows.count
     urbanPlans = Array.new
-    rows.each do |row|
-      urbanPlan = UrbanPlan.new(row)
+    urbanPlanRows.each do |urbanPlanRow|
+      urbanPlan = UrbanPlan.new(urbanPlanRow)
+
+      tilesetRows = @db.execute @queries.tilesets(urbanPlan.urbanPlanId)
+      puts "Tilesets for urban plan %{urbanPlanId}"
+       puts tilesetRows.count
+      tilesets = Array.new
+      tilesetRows.each do |tilesetRow|
+        tileset = Tileset.new(tilesetRow)
+        tilesets.push(tileset)
+      end
+      urbanPlan.tilesets = tilesets
       urbanPlans.push(urbanPlan)
     end
     resultHash = Hash["urbanPlans"=>urbanPlans]

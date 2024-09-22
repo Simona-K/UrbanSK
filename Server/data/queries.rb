@@ -1,7 +1,10 @@
 require 'sqlite3'
 require_relative '../model/urbanplan'
+require_relative '../model/tileset'
 
 class Queries
+
+  # Urban plans
 
   def urbanPlans
     return <<-SQL
@@ -9,52 +12,94 @@ class Queries
     SQL
   end
 
-  def urbanPlan(tilesetid)
+  def urbanPlan(urbanPlanId)
     return <<-SQL
-      select * from urbanPlans where tilesetid="#{tilesetid}"
+      select * from urbanPlans where urbanPlanId="#{urbanPlanId}"
     SQL
   end
 
-  def dropUrbanPlans
+  def dropUrbanPlansTable
     return <<-SQL
       drop table if exists urbanPlans;
     SQL
   end
 
-  def createUrbanPlans
+  def createUrbanPlansTable
     return <<-SQL
       create table urbanPlans (
-        tilesetId varchar(100),
-        grouping varchar(100),
+        urbanPlanId varchar(100),
         name varchar(100),
         latitude varchar(100),
         longitude varchar(100),
-        zoom varchar(100),
+        zoom varchar(100)
+      );
+    SQL
+  end
+
+  def addUrbanPlan(urbanPlan, database)
+    statement = database.prepare <<-SQL
+      insert into urbanPlans (
+      urbanPlanId,
+      name,
+      latitude,
+      longitude,
+      zoom
+      ) values (?,?,?,?,?)
+    SQL
+
+    statement.execute urbanPlan.urbanPlanId,
+                      urbanPlan.name,
+                      urbanPlan.latitude,
+                      urbanPlan.longitude,
+                      urbanPlan.zoom
+    statement.close
+  end
+
+  # Tilesets
+
+  def tilesets
+    return <<-SQL
+      select * from tilesets order by name
+    SQL
+  end
+
+  def tilesets(urbanPlanId)
+    return <<-SQL
+      select * from tilesets where urbanPlanId="#{urbanPlanId}"
+    SQL
+  end
+
+  def dropTilesetsTable
+    return <<-SQL
+      drop table if exists tilesets;
+    SQL
+  end
+
+  def createTilesetsTable
+    return <<-SQL
+      create table tilesets (
+        tilesetId varchar(100),
+        urbanPlanId varchar(100),
+        name varchar(100),
         released varchar(100)
       );
     SQL
   end
 
-  def addMovie(movie, database)
+  def addTileset(tileset, database)
     statement = database.prepare <<-SQL
-      insert into urbanPlans (
-      tilesetid,
-      grouping,
+      insert into tilesets (
+      tilesetId,
+      urbanPlanId,
       name,
-      latitude,
-      longitude,
-      zoom,
       released
-      ) values (?,?,?,?,?,?,?)
+      ) values (?,?,?,?)
     SQL
 
-    statement.execute urbanplan.tilesetid,
-                      urbanplan.grouping,
-                      urbanplan.name,
-                      urbanplan.latitude,
-                      urbanplan.longitude,
-                      urbanplan.zoom,
-                      urbanplan.released
+    statement.execute tileset.tilesetId,
+                      tileset.urbanPlanId,
+                      tileset.name,
+                      tileset.released
     statement.close
   end
 
