@@ -47,7 +47,7 @@ end
 
 get '/api/urbanPlans' do
     urbanPlans = @@database.urbanPlans
-    JSON.pretty_generate(urbanPlans)
+    return urbanPlans.to_json
 end
     
 
