@@ -84,11 +84,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVr-U6-4zn" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="754"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj7-Cz-d4P">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Nn6-wn-SNd">
+                                        <rect key="frame" x="30" y="9.5" width="354" height="32"/>
+                                        <color key="backgroundColor" red="0.97254901959999995" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <segments>
+                                            <segment title="Year 1"/>
+                                            <segment title="Year 2"/>
+                                            <segment title="Year 3"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.97254901959999995" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="selectedSegmentTintColor" red="0.45882352939999999" green="0.75294117650000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="tilesetChangedWithSegmentedControl:" destination="r3J-iR-2EM" eventType="valueChanged" id="QiU-4H-zLt"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.45882352939999999" green="0.75294117650000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Nn6-wn-SNd" firstAttribute="leading" secondItem="mj7-Cz-d4P" secondAttribute="leading" constant="30" id="AUV-Ga-PuM"/>
+                                    <constraint firstItem="Nn6-wn-SNd" firstAttribute="centerY" secondItem="mj7-Cz-d4P" secondAttribute="centerY" id="CAS-Ts-GG8"/>
+                                    <constraint firstAttribute="height" constant="50" id="NYX-eV-jIU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nn6-wn-SNd" secondAttribute="trailing" constant="30" id="i9C-x9-0CL"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izF-Gs-Jge">
-                                <rect key="frame" x="0.0" y="604" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="654" width="414" height="150"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nsS-n8-qA7">
                                         <rect key="frame" x="28" y="20" width="358" height="31"/>
@@ -111,30 +137,13 @@
                                             <action selector="baseMapChangedWithSegmentedControl:" destination="r3J-iR-2EM" eventType="valueChanged" id="RtT-gq-EdU"/>
                                         </connections>
                                     </segmentedControl>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lH9-in-sZM">
-                                        <rect key="frame" x="30" y="120" width="354" height="32"/>
-                                        <color key="backgroundColor" red="0.97254901959999995" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <segments>
-                                            <segment title="Year 1"/>
-                                            <segment title="Year 2"/>
-                                            <segment title="Year 3"/>
-                                        </segments>
-                                        <color key="tintColor" red="0.97254901959999995" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="selectedSegmentTintColor" red="0.45882352939999999" green="0.75294117650000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="tilesetChangedWithSegmentedControl:" destination="r3J-iR-2EM" eventType="valueChanged" id="375-Qq-MBw"/>
-                                        </connections>
-                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.45882352941176469" green="0.75294117647058822" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="1xR-vF-1O3"/>
+                                    <constraint firstAttribute="height" constant="150" id="1xR-vF-1O3"/>
                                     <constraint firstAttribute="trailing" secondItem="nsS-n8-qA7" secondAttribute="trailing" constant="30" id="340-AP-CBe"/>
                                     <constraint firstItem="jZJ-fa-bsw" firstAttribute="trailing" secondItem="nsS-n8-qA7" secondAttribute="trailing" id="3y5-Vb-D2i"/>
                                     <constraint firstItem="nsS-n8-qA7" firstAttribute="leading" secondItem="izF-Gs-Jge" secondAttribute="leading" constant="30" id="6y3-Ux-tAD"/>
-                                    <constraint firstAttribute="trailing" secondItem="lH9-in-sZM" secondAttribute="trailing" constant="30" id="7Je-Jl-xhj"/>
-                                    <constraint firstItem="lH9-in-sZM" firstAttribute="top" secondItem="jZJ-fa-bsw" secondAttribute="bottom" constant="20" id="9aQ-f3-qsG"/>
-                                    <constraint firstItem="lH9-in-sZM" firstAttribute="leading" secondItem="izF-Gs-Jge" secondAttribute="leading" constant="30" id="Swg-yS-dv0"/>
                                     <constraint firstItem="nsS-n8-qA7" firstAttribute="top" secondItem="izF-Gs-Jge" secondAttribute="top" constant="20" id="aj0-VA-5Vq"/>
                                     <constraint firstItem="jZJ-fa-bsw" firstAttribute="top" secondItem="nsS-n8-qA7" secondAttribute="bottom" constant="19" id="bMo-Vc-JY7"/>
                                     <constraint firstItem="jZJ-fa-bsw" firstAttribute="leading" secondItem="nsS-n8-qA7" secondAttribute="leading" id="tw0-G1-0o8"/>
@@ -144,24 +153,27 @@
                         <viewLayoutGuide key="safeArea" id="abz-so-v3l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mj7-Cz-d4P" firstAttribute="top" secondItem="abz-so-v3l" secondAttribute="top" id="4SY-JD-BaH"/>
                             <constraint firstItem="XVr-U6-4zn" firstAttribute="leading" secondItem="Q8S-7b-EFl" secondAttribute="leading" id="8ev-fN-Th8"/>
+                            <constraint firstItem="mj7-Cz-d4P" firstAttribute="trailing" secondItem="abz-so-v3l" secondAttribute="trailing" id="BNe-Pw-Lfs"/>
                             <constraint firstAttribute="bottom" secondItem="izF-Gs-Jge" secondAttribute="bottom" id="Fgb-jV-K9e"/>
                             <constraint firstAttribute="trailing" secondItem="izF-Gs-Jge" secondAttribute="trailing" id="TAH-rc-xPl"/>
+                            <constraint firstItem="mj7-Cz-d4P" firstAttribute="leading" secondItem="abz-so-v3l" secondAttribute="leading" id="aW1-vB-2mA"/>
                             <constraint firstAttribute="bottom" secondItem="XVr-U6-4zn" secondAttribute="bottom" id="cP3-DK-if1"/>
                             <constraint firstItem="izF-Gs-Jge" firstAttribute="leading" secondItem="Q8S-7b-EFl" secondAttribute="leading" id="fCs-VQ-zdF"/>
-                            <constraint firstItem="XVr-U6-4zn" firstAttribute="top" secondItem="Q8S-7b-EFl" secondAttribute="top" id="oSw-XN-V7N"/>
                             <constraint firstAttribute="trailing" secondItem="XVr-U6-4zn" secondAttribute="trailing" id="qd8-TE-PSI"/>
+                            <constraint firstItem="XVr-U6-4zn" firstAttribute="top" secondItem="mj7-Cz-d4P" secondAttribute="bottom" id="rUv-Sb-afV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9t4-u7-GSj"/>
                     <connections>
                         <outlet property="mapView" destination="XVr-U6-4zn" id="bKp-tY-rB1"/>
-                        <outlet property="tilesetsControl" destination="lH9-in-sZM" id="FeU-nZ-iOc"/>
+                        <outlet property="tilesetsControl" destination="Nn6-wn-SNd" id="ak0-nB-SHk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbB-tW-aBE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="76"/>
+            <point key="canvasLocation" x="1011.5942028985507" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>

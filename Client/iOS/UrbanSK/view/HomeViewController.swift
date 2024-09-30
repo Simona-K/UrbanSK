@@ -43,27 +43,44 @@ class HomeViewController: UIViewController {
     }
     
     private func retrieveData() {
-        let httpUrl = "http://192.168.1.246:4567/api/urbanPlans"
-        guard let url = URL(string: httpUrl) else {
-            return
-        }
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let data = data {
-                do {
-                    let res = try JSONDecoder().decode(UrbanPlansResponse.self, from: data)
-                    self.dataSource = res.urbanPlans
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
-                    }
-                } catch let error {
-                    print(error)
-                }
-            }
-        }
-        task.resume()
+//        let httpUrl = "http://localhost:4567/api/urbanPlans"
+//        guard let url = URL(string: httpUrl) else {
+//            return
+//        }
+//        var request = URLRequest(url: url)
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let data = data {
+//                do {
+//                    let res = try JSONDecoder().decode(UrbanPlansResponse.self, from: data)
+//                    self.dataSource = res.urbanPlans
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                        self.refreshControl.endRefreshing()
+//                    }
+//                } catch let error {
+//                    print(error)
+//                }
+//            }
+//        }
+//        task.resume()
+        
+        let tileset1 = Tileset.init(tilesetId: "alexgizh.54t5f5qx", urbanPlanId: "skopjeMalRing", name: "План Град Скопља", released: "1930")
+        let tileset2 = Tileset.init(tilesetId: "alexgizh.6e25di4e", urbanPlanId: "skopjeMalRing", name: "ДУП Мал Ринг", released: "2012")
+        let skMalRing = UrbanPlan.init(urbanPlanId: "skopjeMalRing", name: "Скопје - Мал ринг", latitude: "41.995942", longitude: "21.431805", zoom: "15", tilesets: [tileset1, tileset2])
+        
+        let tileset3 = Tileset.init(tilesetId: "alexgizh.3biwsv4p", urbanPlanId: "ilinden", name: "Касарна Илинден", released: "2010")
+        let ilinden = UrbanPlan.init(urbanPlanId: "ilinden", name: "Касарна Илинден", latitude: "42.019552", longitude: "21.419701", zoom: "15", tilesets: [tileset3])
+
+        let tileset4 = Tileset.init(tilesetId: "alexgizh.diphmywp", urbanPlanId: "skopjeGolemRingZapad", name: "ДУП Голем Ринг - Запад", released: "2006")
+        let skGolemRing = UrbanPlan.init(urbanPlanId: "skopjeGolemRingZapad", name: "Скопје - Голем ринг Запад", latitude: "41.995640", longitude: "21.426908", zoom: "15", tilesets: [tileset4])
+
+        
+        
+        self.dataSource = [skMalRing, ilinden, skGolemRing]
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+
     }
         
 }
